@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Data;
 using ConsultorioDigital.DAL.Mappers;
 using ConsultorioDigital.Seguridad;
 
@@ -22,18 +19,12 @@ namespace ConsultorioDigital.DAL
     public abstract void Actualizar(T entidad);
 
     public abstract void Crear(T entidad);
-    
+
     public void Eliminar(T entidad)
     {
       string sql = $"DELETE FROM [{_nombreTabla}] WHERE {_nombreTabla}_Id = @Id";
 
-      using (var command = UnitOfWork.CreateCommand(sql))
-      {
-        command.CommandType = System.Data.CommandType.Text;
-        command.Parameters.Add("@Id");
-
-        command.ExecuteNonQuery();
-      }
+      UnitOfWork.Execute(sql, UnitOfWork.CreateParameter("@Id", entidad.Id));
     }
 
     public T Obtener(T entidad)
@@ -42,18 +33,11 @@ namespace ConsultorioDigital.DAL
 
       string sql = $"SELECT * FROM [{_nombreTabla}] WHERE {_nombreTabla}_Id = @Id";
 
-      using (var command = UnitOfWork.CreateCommand(sql))
-      {
-        command.CommandType = System.Data.CommandType.Text;
-        command.Parameters.Add("@Id", entidad.Id);
+      DataTable table = UnitOfWork.Read(sql, null, CommandType.Text).Tables[0];
 
-        using (var reader = command.ExecuteReader())
-        {
-          if (reader.Read())
-          {
-            MapperFactory.Crear<T>().Map(reader);
-          }
-        }
+      if (table.Rows.Count > 0)
+      {
+        MapperFactory.Crear<T>().Map(table.Rows[0]);
       }
 
       return entidadEncontrada;
@@ -65,18 +49,12 @@ namespace ConsultorioDigital.DAL
 
       string sql = $"SELECT * FROM [{_nombreTabla}]";
 
-      using (var command = UnitOfWork.CreateCommand(sql))
-      {
-        command.CommandType = System.Data.CommandType.Text;
+      DataTable table = UnitOfWork.Read(sql, null, CommandType.Text).Tables[0];
 
-        using (var reader = command.ExecuteReader())
-        {
-          while (reader.Read())
-          {
-            T entidad = MapperFactory.Crear<T>().Map(reader);
-            entidades.Add(entidad);
-          }
-        }
+      foreach (DataRow row in table.Rows)
+      {
+        T entidad = MapperFactory.Crear<T>().Map(row);
+        entidades.Add(entidad);
       }
 
       return entidades;

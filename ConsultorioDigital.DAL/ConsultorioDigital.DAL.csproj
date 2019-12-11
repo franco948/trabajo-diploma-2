@@ -45,11 +45,12 @@
     <Compile Include="Concreto\AdoNetUnitOfWork.cs" />
     <Compile Include="Abstracto\CrudGenerico.cs" />
     <Compile Include="Concreto\Mappers\UsuarioMapper.cs" />
-    <Compile Include="ExtensionMethods\IDataParameterCollectionExtension.cs" />
     <Compile Include="Abstracto\IAdoNetUnitOfWork.cs" />
     <Compile Include="Abstracto\ICrud.cs" />
     <Compile Include="Abstracto\IUnitOfWork.cs" />
     <Compile Include="Abstracto\Mapper.cs" />
+    <Compile Include="ExtensionMethods\IDbConnectionExtension.cs" />
+    <Compile Include="Factories\ProviderFactory.cs" />
     <Compile Include="Factories\MapperFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Concreto\Seguridad\UsuarioDAL.cs" />

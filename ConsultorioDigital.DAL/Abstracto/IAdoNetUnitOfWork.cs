@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace ConsultorioDigital.DAL
 {
   internal interface IAdoNetUnitOfWork : IUnitOfWork
   {
-    IDbCommand CreateCommand(string sql);
+    int Execute(string sql, params IDataParameter[] parameters);
+    DataSet Read(string sql, IDataParameter[] parameters, CommandType commandType);
+    IDataParameter CreateParameter(string name, object value);
   }
 }

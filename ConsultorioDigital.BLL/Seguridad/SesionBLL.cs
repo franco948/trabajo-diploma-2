@@ -20,12 +20,14 @@ namespace ConsultorioDigital.BLL
 
         if (usuarioEncontrado != null && usuario.Autenticar(usuarioEncontrado))
         {
-            Sesion.Instancia.Login(usuario);
-
-            return true;
+            Sesion.Instancia.Login(usuarioEncontrado);            
         }
 
-        return false;
+        usuarioDAL.Actualizar(usuarioEncontrado);
+
+        //unitOfWork.SaveChanges();
+
+        return Sesion.Instancia.Logueado;
       }
     }
   }

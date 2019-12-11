@@ -1,5 +1,6 @@
 ﻿using ConsultorioDigital.BLL;
 using ConsultorioDigital.Seguridad;
+using ConsultorioDigital.UI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,7 @@ namespace ConsultorioDigital.UI.Formularios
       }
       else
       {
-        MessageBox.Show("Error", "Email o contraseña incorrectos");
+        MessageBoxHelper.ShowError("Email o contraseña incorrectos");
       }
     }
   }
