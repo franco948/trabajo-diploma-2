@@ -67,6 +67,7 @@
     <Compile Include="Formularios\Seguridad\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MessageBoxHelper.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>

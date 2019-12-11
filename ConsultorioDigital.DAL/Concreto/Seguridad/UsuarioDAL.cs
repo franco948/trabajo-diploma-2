@@ -12,7 +12,7 @@ namespace ConsultorioDigital.DAL
 
     public override void Actualizar(Usuario entidad)
     {
-      throw new NotImplementedException();
+      
     }
 
     public override void Crear(Usuario entidad)

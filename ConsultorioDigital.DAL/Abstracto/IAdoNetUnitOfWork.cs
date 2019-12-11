@@ -10,5 +10,7 @@ namespace ConsultorioDigital.DAL
   internal interface IAdoNetUnitOfWork : IUnitOfWork
   {
     IDbCommand CreateCommand(string sql);
+    //void Execute(string sql, IDataParameter[] parameters);
+    //DataTable Read(string sql, IDataParameter[] parameters)
   }
 }
