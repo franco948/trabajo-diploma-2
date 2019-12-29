@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ConsultorioDigital.DAL.Factories;
+using System;
 using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsultorioDigital.DAL
 {
@@ -20,15 +16,13 @@ namespace ConsultorioDigital.DAL
       _transaction = connection.BeginTransaction();
     }
 
-    public IDbCommand CreateCommand(string sql)
+    public IDataParameter CreateParameter(string name, object value)
     {
-      var command = _connection.CreateCommand();
+      var param = ProviderFactory.GetProvider().CreateParameter();
+      param.ParameterName = name;
+      param.Value = value;
 
-      command.CommandText = sql;
-      command.CommandType = CommandType.StoredProcedure;
-      command.Transaction = _transaction;
-
-      return command;
+      return param;
     }
 
     public void Dispose()
@@ -46,16 +40,56 @@ namespace ConsultorioDigital.DAL
       }
     }
 
+    public int Execute(string sql, params IDataParameter[] parametros)
+    {
+      using (var command = _connection.CreateCommand())
+      {
+        command.CommandType = CommandType.StoredProcedure;
+        command.CommandText = sql;
+
+        AddParameters(command, parametros);
+
+        return command.ExecuteNonQuery();
+      }
+    }
+
+    public DataSet Read(string sql,
+      IDataParameter[] parametros, 
+      CommandType commandType = CommandType.StoredProcedure)
+    {
+      IDbDataAdapter adapter = _connection.CreateDataAdapter();
+      adapter.SelectCommand.Transaction = _transaction;
+      adapter.SelectCommand.CommandType = commandType;
+      adapter.SelectCommand.CommandText = sql;
+
+      AddParameters(adapter.SelectCommand, parametros);
+
+      DataSet dataSet = new DataSet();
+      adapter.Fill(dataSet);
+
+      return dataSet;
+    }
+
     public void SaveChanges()
     {
       if (_transaction == null)
       {
         throw new InvalidOperationException
                ("Transaction have already been committed. Check your transaction handling.");
-      }        
+      }
 
       _transaction.Commit();
       _transaction = null;
+    }
+
+    private void AddParameters(IDbCommand command, IDataParameter[] parametros)
+    {
+      if (parametros == null) return;
+
+      foreach (var param in parametros)
+      {
+        command.Parameters.Add(command);
+      }
     }
   }
 }

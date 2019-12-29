@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ConsultorioDigital.UI.Helpers
 {
-  static class MessageBoxHelper
+  public static class MessageBoxHelper
   {
     public static void ShowError(string message)
     {

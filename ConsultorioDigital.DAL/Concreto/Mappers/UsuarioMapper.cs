@@ -6,13 +6,13 @@ namespace ConsultorioDigital.DAL.Mappers
 {
   internal class UsuarioMapper : Mapper<Usuario>
   {
-    public override Usuario Map(IDataReader reader)
+    public override Usuario Map(DataRow row)
     {
-      return new Usuario((string)reader["Usuario_Email"], null)
+      return new Usuario((string)row["Usuario_Email"], null)
       {
-        Id = (Guid)reader["Usuario_Id"],
-        PasswordCifrado = Convert.ToString(reader["Usuario_PasswordCifrado"]),
-        Intentos = Convert.ToUInt32(reader["Usuario_Intentos"])
+        Id = (Guid)row["Usuario_Id"],
+        PasswordCifrado = Convert.ToString(row["Usuario_PasswordCifrado"]),
+        Intentos = Convert.ToUInt32(row["Usuario_Intentos"])
       };
     }
   }
