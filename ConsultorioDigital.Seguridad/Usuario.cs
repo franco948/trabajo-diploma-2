@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsultorioDigital.Seguridad
 {
   public class Usuario : Entidad<Guid>
   {
-    private const uint CantidadMaximaIntentos = 3;
+    private const byte CantidadMaximaIntentos = 3;
+    private List<Permiso> _permisos = new List<Permiso>();
 
     public Usuario(string email, string password)
     {
@@ -24,9 +23,34 @@ namespace ConsultorioDigital.Seguridad
     public string Password { get; set; }
 
     public string PasswordCifrado { get; set; }
-    public uint Intentos { get; set; }
+    public byte Intentos { get; set; }
 
     internal bool TieneIntentos => Intentos > 0;
+
+    public IEnumerable<Permiso> Permisos 
+    { 
+      get { return _permisos;  } 
+      set { _permisos = value.ToList(); } 
+    }
+
+    public bool Agregar(Permiso permiso)
+    {
+      bool existe = _permisos.Any(p => p.Buscar(permiso));
+
+      if (!existe)
+      {
+        _permisos.Add(permiso);
+
+        return true;
+      }
+
+      return false;
+    }   
+
+    public void Remover(Permiso permiso)
+    {      
+      _permisos.RemoveAll(x => x.Id == permiso.Id);
+    }
 
     public void ResetearIntentos()
     {

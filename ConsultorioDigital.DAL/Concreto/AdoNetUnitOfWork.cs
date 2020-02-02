@@ -44,6 +44,7 @@ namespace ConsultorioDigital.DAL
     {
       using (var command = _connection.CreateCommand())
       {
+        command.Transaction = _transaction;
         command.CommandType = CommandType.StoredProcedure;
         command.CommandText = sql;
 
@@ -53,13 +54,11 @@ namespace ConsultorioDigital.DAL
       }
     }
 
-    public DataSet Read(string sql,
-      IDataParameter[] parametros, 
-      CommandType commandType = CommandType.StoredProcedure)
+    public DataSet Read(string sql, IDataParameter[] parametros)
     {
       IDbDataAdapter adapter = _connection.CreateDataAdapter();
       adapter.SelectCommand.Transaction = _transaction;
-      adapter.SelectCommand.CommandType = commandType;
+      adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
       adapter.SelectCommand.CommandText = sql;
 
       AddParameters(adapter.SelectCommand, parametros);
@@ -88,7 +87,7 @@ namespace ConsultorioDigital.DAL
 
       foreach (var param in parametros)
       {
-        command.Parameters.Add(command);
+        command.Parameters.Add(param);
       }
     }
   }

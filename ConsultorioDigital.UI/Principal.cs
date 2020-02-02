@@ -1,13 +1,6 @@
 ﻿using ConsultorioDigital.Seguridad;
 using ConsultorioDigital.UI.Formularios;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ConsultorioDigital.UI
@@ -21,10 +14,10 @@ namespace ConsultorioDigital.UI
 
     private void Principal_Load(object sender, EventArgs e)
     {
-      LoginToolStripMenuItem_Click(this, null);
+      mnuLogin_Click(this, null);
     }
 
-    private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
+    private void mnuLogin_Click(object sender, EventArgs e)
     {
       if (Sesion.Instancia.Logueado)
       {
@@ -38,7 +31,31 @@ namespace ConsultorioDigital.UI
         loginForm.ShowDialog(this);
       }
 
-      loginToolStripMenuItem.Text = Sesion.Instancia.Logueado ? "Logout" : "Login";
-    }    
+      mnuLogin.Text = Sesion.Instancia.Logueado ? "Logout" : "Login";
+    }
+
+    private void mnuPermisos_Click(object sender, EventArgs e)
+    {
+      PermisosForm form = new PermisosForm();
+
+      form.MdiParent = this;
+      form.Show();
+    }
+
+    private void mnuUsuarios_Click(object sender, EventArgs e)
+    {
+      UsuarioForm form = new UsuarioForm();
+
+      form.MdiParent = this;
+      form.Show();
+    }
+
+    private void mnuFamilias_Click(object sender, EventArgs e)
+    {
+      FamiliaForm form = new FamiliaForm();
+
+      form.MdiParent = this;
+      form.Show();
+    }
   }
 }

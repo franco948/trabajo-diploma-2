@@ -61,11 +61,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Seguridad\FamiliaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Seguridad\FamiliaForm.Designer.cs">
+      <DependentUpon>FamiliaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Seguridad\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Seguridad\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Seguridad\PermisosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Seguridad\PermisosForm.Designer.cs">
+      <DependentUpon>PermisosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Seguridad\UsuarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Seguridad\UsuarioForm.Designer.cs">
+      <DependentUpon>UsuarioForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MessageBoxHelper.cs" />
     <Compile Include="Principal.cs">
@@ -76,8 +94,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Seguridad\FamiliaForm.resx">
+      <DependentUpon>FamiliaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Seguridad\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Seguridad\PermisosForm.resx">
+      <DependentUpon>PermisosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Seguridad\UsuarioForm.resx">
+      <DependentUpon>UsuarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

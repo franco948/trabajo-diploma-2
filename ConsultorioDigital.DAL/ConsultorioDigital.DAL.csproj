@@ -43,12 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concreto\AdoNetUnitOfWork.cs" />
-    <Compile Include="Abstracto\CrudGenerico.cs" />
+    <Compile Include="Abstracto\CrudBase.cs" />
+    <Compile Include="Concreto\Mappers\PermisoMapper.cs" />
     <Compile Include="Concreto\Mappers\UsuarioMapper.cs" />
     <Compile Include="Abstracto\IAdoNetUnitOfWork.cs" />
     <Compile Include="Abstracto\ICrud.cs" />
     <Compile Include="Abstracto\IUnitOfWork.cs" />
     <Compile Include="Abstracto\Mapper.cs" />
+    <Compile Include="Concreto\Seguridad\PermisoDAL.cs" />
     <Compile Include="ExtensionMethods\IDbConnectionExtension.cs" />
     <Compile Include="Factories\ProviderFactory.cs" />
     <Compile Include="Factories\MapperFactory.cs" />

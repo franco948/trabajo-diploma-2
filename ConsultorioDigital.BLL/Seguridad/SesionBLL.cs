@@ -1,10 +1,5 @@
 ﻿using ConsultorioDigital.DAL;
 using ConsultorioDigital.Seguridad;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsultorioDigital.BLL
 {
@@ -25,7 +20,7 @@ namespace ConsultorioDigital.BLL
 
         usuarioDAL.Actualizar(usuarioEncontrado);
 
-        //unitOfWork.SaveChanges();
+        unitOfWork.SaveChanges();
 
         return Sesion.Instancia.Logueado;
       }

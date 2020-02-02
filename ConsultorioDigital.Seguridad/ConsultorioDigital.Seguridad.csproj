@@ -41,10 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CryptoManager.cs" />
+    <Compile Include="Static\CryptoManager.cs" />
     <Compile Include="Entidad.cs" />
+    <Compile Include="Permisos\CodigoPermiso.cs" />
+    <Compile Include="Permisos\Familia.cs" />
+    <Compile Include="Permisos\Permiso.cs" />
+    <Compile Include="Permisos\Patente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sesion.cs" />
+    <Compile Include="Static\Sesion.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,7 +12,7 @@ namespace ConsultorioDigital.DAL.Mappers
       {
         Id = (Guid)row["Usuario_Id"],
         PasswordCifrado = Convert.ToString(row["Usuario_PasswordCifrado"]),
-        Intentos = Convert.ToUInt32(row["Usuario_Intentos"])
+        Intentos = Convert.ToByte(row["Usuario_Intentos"])
       };
     }
   }

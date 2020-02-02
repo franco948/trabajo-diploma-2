@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsultorioDigital.Seguridad
 {
@@ -10,8 +6,6 @@ namespace ConsultorioDigital.Seguridad
   {
     private static Sesion _instancia = null;
     private static readonly object _lock = new object();
-
-    private Usuario _usuario;
 
     public static Sesion Instancia
     {
@@ -32,19 +26,19 @@ namespace ConsultorioDigital.Seguridad
       }
     }
 
-    public Usuario Usuario => _usuario;
+    public Usuario Usuario { get; private set; }
 
     public void Login(Usuario usuario)
     {
       // TODO traducir mensaje de error
-      if (_usuario != null) throw new InvalidOperationException("Ya hay una sesión abierta");
+      if (Usuario != null) throw new InvalidOperationException("Ya hay una sesión abierta");
 
-      _usuario = usuario;
+      Usuario = usuario;
     }
 
     public void Logout()
     {
-      _usuario = null;
+      Usuario = null;
     }
 
     public bool Logueado => Usuario != null;
