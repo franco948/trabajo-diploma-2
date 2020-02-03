@@ -53,7 +53,33 @@ namespace ConsultorioDigital.DAL
         UnitOfWork.CreateParameter("@Hijo_Id", hijo.Id)
       };
 
-      UnitOfWork.Execute("usp_DeleteFamilia", parametros);
+      UnitOfWork.Execute("usp_DeleteFamilia" +
+        "", parametros);
+    }
+
+    public override void Crear(Permiso entidad)
+    {
+      IDataParameter idParam = UnitOfWork.CreateParameter("@Permiso_Id", 0);
+      idParam.Direction = ParameterDirection.Output;
+
+      IDataParameter[] parametros =
+      {
+        UnitOfWork.CreateParameter("@Permiso_Nombre", entidad.Nombre),
+        idParam
+      };
+
+      UnitOfWork.Execute("usp_CreatePermiso", parametros);
+      entidad.Id = (int)idParam.Value;
+    }
+
+    public override void Eliminar(Permiso entidad)
+    {
+      IDataParameter[] parametros =
+      {
+        UnitOfWork.CreateParameter("@Permiso_Id", entidad.Id)
+      };
+
+      UnitOfWork.Execute("usp_DeletePermiso", parametros);
     }
   }
 }

@@ -23,8 +23,9 @@ namespace ConsultorioDigital.UI.Formularios
 
       cboFamilias.DisplayMember = "Nombre";
 
-      cboFamilias.DataSource = null;
-      cboFamilias.DataSource = permisos.Where(x => x.GetType() == typeof(Familia)).ToList();
+      //cboFamilias.DataSource = null;
+      //cboFamilias.DataSource = permisos.Where(x => x.GetType() == typeof(Familia)).ToList();
+      cboFamilias.Items.AddRange(permisos.Where(x => x.GetType() == typeof(Familia)).ToArray());
 
       EnlazarTreeView(permisos);
     }
@@ -48,11 +49,6 @@ namespace ConsultorioDigital.UI.Formularios
 
     private void AgregarRecursivo(Permiso permiso, TreeNode nodoPadre, IDictionary<TreeNode, Permiso> permisos)
     {
-      //if (permisos != null && !permisos.ContainsKey(nodoPadre))
-      //{
-      //  permisos.Add(nodoPadre, permiso);        
-      //}
-
       foreach (Permiso hijo in permiso.Hijos)
       {
         TreeNode nodoHijo = new TreeNode(hijo.Nombre);
@@ -86,6 +82,12 @@ namespace ConsultorioDigital.UI.Formularios
     private void btnAgregar_Click(object sender, System.EventArgs e)
     {
       TreeNode nodo = trePermisos.SelectedNode;
+
+      if (_familia == null)
+      {
+        MessageBoxHelper.ShowError("Debe seleccionar una familia");
+        return;
+      }
 
       if (nodo == null)
       {
@@ -146,6 +148,71 @@ namespace ConsultorioDigital.UI.Formularios
         treFamilia.Nodes.Remove(nodo);
 
         _hijos.Remove(nodo);
+
+        EnlazarTreeView(_permisoBLL.Todos());
+      }
+      catch (Exception ex)
+      {
+        MessageBoxHelper.ShowError(ex.Message);
+      }
+    }
+
+    private void btnCrear_Click(object sender, EventArgs e)
+    {
+      string input = Microsoft.VisualBasic.Interaction.InputBox("Nombre",
+                       "Crear Familia",
+                       "",
+                       Width / 2,
+                       Height / 2);
+
+      if (string.IsNullOrWhiteSpace(input))
+      {
+        //MessageBoxHelper.ShowError("Debe ingresar un nombre");
+        return;
+      }
+
+      Familia familia = new Familia 
+      { 
+        Nombre = input
+      };
+
+      try
+      {
+        _permisoBLL.Crear(familia);
+
+        MessageBox.Show("Familia creada con exito");
+
+        cboFamilias.Items.Add(familia);
+
+        cboFamilias.SelectedItem = familia;
+
+        EnlazarTreeView(_permisoBLL.Todos());
+      }
+      catch (Exception ex)
+      {
+        MessageBoxHelper.ShowError(ex.Message);
+      }      
+    }
+
+    private void btnEliminar_Click(object sender, EventArgs e)
+    {
+      Familia familia = (Familia)cboFamilias.SelectedItem;
+
+      if (familia == null)
+      {
+        MessageBoxHelper.ShowError("Debe seleccionar una familia");
+        return;
+      }
+
+      try
+      {
+        _permisoBLL.Eliminar(familia);
+
+        MessageBox.Show("La familia ha sido eliminada con exito");
+
+        cboFamilias.Items.Remove(familia);
+
+        cboFamilias.SelectedItem = null;
 
         EnlazarTreeView(_permisoBLL.Todos());
       }

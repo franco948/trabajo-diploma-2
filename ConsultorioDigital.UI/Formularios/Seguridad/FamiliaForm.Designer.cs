@@ -36,6 +36,7 @@
       this.btnRemover = new System.Windows.Forms.Button();
       this.btnAgregar = new System.Windows.Forms.Button();
       this.label2 = new System.Windows.Forms.Label();
+      this.btnEliminar = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // label1
@@ -71,6 +72,7 @@
       this.btnCrear.TabIndex = 3;
       this.btnCrear.Text = "+";
       this.btnCrear.UseVisualStyleBackColor = true;
+      this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
       // 
       // trePermisos
       // 
@@ -81,7 +83,7 @@
       // 
       // btnRemover
       // 
-      this.btnRemover.Location = new System.Drawing.Point(237, 111);
+      this.btnRemover.Location = new System.Drawing.Point(237, 140);
       this.btnRemover.Name = "btnRemover";
       this.btnRemover.Size = new System.Drawing.Size(75, 23);
       this.btnRemover.TabIndex = 5;
@@ -91,7 +93,7 @@
       // 
       // btnAgregar
       // 
-      this.btnAgregar.Location = new System.Drawing.Point(237, 82);
+      this.btnAgregar.Location = new System.Drawing.Point(237, 111);
       this.btnAgregar.Name = "btnAgregar";
       this.btnAgregar.Size = new System.Drawing.Size(75, 23);
       this.btnAgregar.TabIndex = 6;
@@ -108,11 +110,22 @@
       this.label2.TabIndex = 7;
       this.label2.Text = "Permisos";
       // 
+      // btnEliminar
+      // 
+      this.btnEliminar.Location = new System.Drawing.Point(237, 82);
+      this.btnEliminar.Name = "btnEliminar";
+      this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+      this.btnEliminar.TabIndex = 8;
+      this.btnEliminar.Text = "-";
+      this.btnEliminar.UseVisualStyleBackColor = true;
+      this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+      // 
       // FamiliaForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 450);
+      this.Controls.Add(this.btnEliminar);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.btnAgregar);
       this.Controls.Add(this.btnRemover);
@@ -138,5 +151,6 @@
     private System.Windows.Forms.Button btnRemover;
     private System.Windows.Forms.Button btnAgregar;
     private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.Button btnEliminar;
   }
 }

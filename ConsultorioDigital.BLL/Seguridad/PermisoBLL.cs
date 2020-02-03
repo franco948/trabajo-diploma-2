@@ -14,16 +14,22 @@ namespace ConsultorioDigital.BLL.Seguridad
 
     public void Crear(Permiso entidad)
     {
-      //using (IUnitOfWork unitOfWork = UnitOfWorkFactory.Create())
-      //{
-      //  PermisoDAL permisoDAL = new PermisoDAL(unitOfWork);
-      //  permisoDAL.Crear()
-      //}
+      using (IUnitOfWork unitOfWork = UnitOfWorkFactory.Create())
+      {
+        PermisoDAL permisoDAL = new PermisoDAL(unitOfWork);
+        permisoDAL.Crear(entidad);
+        unitOfWork.SaveChanges();
+      }
     }
 
     public void Eliminar(Permiso entidad)
     {
-      throw new System.NotImplementedException();
+      using (IUnitOfWork unitOfWork = UnitOfWorkFactory.Create())
+      {
+        PermisoDAL permisoDAL = new PermisoDAL(unitOfWork);
+        permisoDAL.Eliminar(entidad);
+        unitOfWork.SaveChanges();
+      }
     }
 
     public Permiso Obtener(Permiso entidad)
