@@ -57,5 +57,13 @@ namespace ConsultorioDigital.UI
       form.MdiParent = this;
       form.Show();
     }
+
+    private void mnuCambiarIdioma_Click(object sender, EventArgs e)
+    {
+      IdiomaForm form = new IdiomaForm();
+
+      form.MdiParent = this;
+      form.Show();
+    }
   }
 }

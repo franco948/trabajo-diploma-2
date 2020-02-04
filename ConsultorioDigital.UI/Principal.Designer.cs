@@ -32,8 +32,11 @@
       this.mnuLogin = new System.Windows.Forms.ToolStripMenuItem();
       this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuPermisos = new System.Windows.Forms.ToolStripMenuItem();
-      this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuFamilias = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+      this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.idiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuCambiarIdioma = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -41,7 +44,8 @@
       // 
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLogin,
-            this.seguridadToolStripMenuItem});
+            this.seguridadToolStripMenuItem,
+            this.opcionesToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -68,23 +72,46 @@
       // mnuPermisos
       // 
       this.mnuPermisos.Name = "mnuPermisos";
-      this.mnuPermisos.Size = new System.Drawing.Size(180, 22);
+      this.mnuPermisos.Size = new System.Drawing.Size(122, 22);
       this.mnuPermisos.Text = "Permisos";
       this.mnuPermisos.Click += new System.EventHandler(this.mnuPermisos_Click);
-      // 
-      // mnuUsuarios
-      // 
-      this.mnuUsuarios.Name = "mnuUsuarios";
-      this.mnuUsuarios.Size = new System.Drawing.Size(180, 22);
-      this.mnuUsuarios.Text = "Usuarios";
-      this.mnuUsuarios.Click += new System.EventHandler(this.mnuUsuarios_Click);
       // 
       // mnuFamilias
       // 
       this.mnuFamilias.Name = "mnuFamilias";
-      this.mnuFamilias.Size = new System.Drawing.Size(180, 22);
+      this.mnuFamilias.Size = new System.Drawing.Size(122, 22);
       this.mnuFamilias.Text = "Familias";
       this.mnuFamilias.Click += new System.EventHandler(this.mnuFamilias_Click);
+      // 
+      // mnuUsuarios
+      // 
+      this.mnuUsuarios.Name = "mnuUsuarios";
+      this.mnuUsuarios.Size = new System.Drawing.Size(122, 22);
+      this.mnuUsuarios.Text = "Usuarios";
+      this.mnuUsuarios.Click += new System.EventHandler(this.mnuUsuarios_Click);
+      // 
+      // opcionesToolStripMenuItem
+      // 
+      this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.idiomaToolStripMenuItem});
+      this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
+      this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+      this.opcionesToolStripMenuItem.Text = "Configuracion";
+      // 
+      // idiomaToolStripMenuItem
+      // 
+      this.idiomaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCambiarIdioma});
+      this.idiomaToolStripMenuItem.Name = "idiomaToolStripMenuItem";
+      this.idiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.idiomaToolStripMenuItem.Text = "Idioma";
+      // 
+      // mnuCambiarIdioma
+      // 
+      this.mnuCambiarIdioma.Name = "mnuCambiarIdioma";
+      this.mnuCambiarIdioma.Size = new System.Drawing.Size(180, 22);
+      this.mnuCambiarIdioma.Text = "Cambiar idioma";
+      this.mnuCambiarIdioma.Click += new System.EventHandler(this.mnuCambiarIdioma_Click);
       // 
       // Principal
       // 
@@ -113,6 +140,9 @@
     private System.Windows.Forms.ToolStripMenuItem mnuPermisos;
     private System.Windows.Forms.ToolStripMenuItem mnuUsuarios;
     private System.Windows.Forms.ToolStripMenuItem mnuFamilias;
+    private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem idiomaToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem mnuCambiarIdioma;
   }
 }
 
