@@ -163,15 +163,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ConsultorioDigital.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ConsultorioDigital_log.ldf">
-      <DependentUpon>ConsultorioDigital.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ConsultorioDigital.BLL\ConsultorioDigital.BLL.csproj">
       <Project>{F8E2E487-4D82-44E2-97CA-A6F805BBF07F}</Project>
       <Name>ConsultorioDigital.BLL</Name>
