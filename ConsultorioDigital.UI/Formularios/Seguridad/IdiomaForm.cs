@@ -8,5 +8,10 @@ namespace ConsultorioDigital.UI.Formularios
     {
       InitializeComponent();
     }
+
+    private void btnCambiar_Click(object sender, System.EventArgs e)
+    {
+
+    }
   }
 }

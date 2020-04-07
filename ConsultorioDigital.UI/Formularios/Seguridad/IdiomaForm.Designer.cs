@@ -50,6 +50,7 @@
       this.btnCambiar.TabIndex = 2;
       this.btnCambiar.Text = "Cambiar";
       this.btnCambiar.UseVisualStyleBackColor = true;
+      this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
       // 
       // cboIdiomas
       // 
